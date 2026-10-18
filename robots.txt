@@ -1,0 +1,3 @@
+User-agent: *
+Allow: /
+Sitemap: https://evan20130.github.io/https-TON-PSEUDO.github.io-Musimix2-/sitemap.xml

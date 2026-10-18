@@ -1,0 +1,9 @@
+@keyframes soft-pulse {
+  50% { box-shadow: 0 0 0 5px rgb(213 245 104 / 12%); }
+}
+
+.status-dot { animation: soft-pulse 2.2s ease-in-out infinite; }
+
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after { animation-duration: .01ms !important; animation-iteration-count: 1 !important; scroll-behavior: auto !important; }
+}

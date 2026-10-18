@@ -1,0 +1,76 @@
+<!doctype html>
+<html lang="fr">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="theme-color" content="#111117">
+    <meta name="description" content="Votre bibliothèque musicale personnelle.">
+    <meta name="robots" content="index, follow">
+    <link rel="canonical" href="https://evan20130.github.io/https-TON-PSEUDO.github.io-Musimix2-/">
+    <link rel="manifest" href="manifest.json">
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/rgb.css">
+    <title>Musimix 2</title>
+  </head>
+  <body>
+    <aside class="sidebar">
+      <a class="logo" href="#accueil" aria-label="Musimix 2, accueil">MUSIMIX <span>2</span></a>
+      <nav class="navigation" aria-label="Navigation principale">
+        <button class="nav-button active" type="button" data-view="home"><span aria-hidden="true">⌂</span> Accueil</button>
+        <button class="nav-button" type="button" data-view="ai"><span aria-hidden="true">✳</span> IA</button>
+        <button class="nav-button" type="button" data-view="favorites"><span aria-hidden="true">♡</span> Favoris</button>
+        <button class="nav-button" type="button" data-view="library"><span aria-hidden="true">♫</span> MP3</button>
+        <button class="nav-button" type="button" data-view="offline"><span aria-hidden="true">↓</span> Hors ligne</button>
+      </nav>
+      <p class="sidebar-note"><span class="status-dot"></span> Bibliothèque locale</p>
+    </aside>
+
+    <main class="main" id="accueil">
+      <header class="page-header">
+        <div>
+          <p class="eyebrow">TON ESPACE MUSICAL</p>
+          <h1 id="page-title">Bonjour, Evan.</h1>
+        </div>
+        <label class="search-wrap">
+          <span aria-hidden="true">⌕</span>
+          <span class="visually-hidden">Rechercher dans la bibliothèque</span>
+          <input id="search" type="search" placeholder="Rechercher un morceau" autocomplete="off">
+        </label>
+      </header>
+
+      <section class="ai-panel" id="ai-panel" aria-labelledby="ai-title">
+        <div class="ai-copy">
+          <p class="eyebrow">SÉLECTION DU MOMENT</p>
+          <h2 id="ai-title">Musimix <span>AI</span></h2>
+          <p id="aiText" aria-live="polite">Choisis une ambiance pour explorer ta bibliothèque.</p>
+          <div class="mood-actions">
+            <button class="mood-button" type="button" data-mood="gaming">Gaming</button>
+            <button class="mood-button secondary" type="button" data-mood="chill">Chill</button>
+          </div>
+        </div>
+        <div class="sound-art" aria-hidden="true"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></div>
+      </section>
+
+      <section class="library-section" aria-labelledby="library-title">
+        <div class="section-heading">
+          <div>
+            <p class="eyebrow" id="collection-label">TA COLLECTION</p>
+            <h2 id="library-title">Bibliothèque <span id="song-count" class="count">0</span></h2>
+          </div>
+          <label class="add-button" for="fileInput"><span aria-hidden="true">+</span> Ajouter des MP3</label>
+          <input class="visually-hidden" type="file" id="fileInput" accept="audio/*" multiple>
+        </div>
+        <div class="track-heading" aria-hidden="true"><span>TITRE</span><span>ACTION</span></div>
+        <div id="songs" class="songs" aria-live="polite"></div>
+      </section>
+    </main>
+
+    <footer class="player">
+      <div class="current-track"><span class="cover-mark" aria-hidden="true">♫</span><span id="currentSong">Aucune musique</span></div>
+      <audio id="audio" controls preload="metadata" aria-label="Lecteur audio"></audio>
+      <span class="player-caption">MUSIMIX 2</span>
+    </footer>
+
+    <script type="module" src="js/app.js"></script>
+  </body>
+</html>

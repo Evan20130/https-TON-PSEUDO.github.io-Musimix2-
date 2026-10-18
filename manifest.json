@@ -1,0 +1,10 @@
+{
+  "name": "Musimix 2",
+  "short_name": "Musimix",
+  "description": "Votre bibliothèque musicale personnelle.",
+  "start_url": "./",
+  "scope": "./",
+  "display": "standalone",
+  "background_color": "#111117",
+  "theme_color": "#111117"
+}
