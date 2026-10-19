@@ -8,18 +8,23 @@
     <meta name="robots" content="index, follow">
     <link rel="canonical" href="https://evan20130.github.io/https-TON-PSEUDO.github.io-Musimix2-/">
     <link rel="manifest" href="manifest.json">
+    <link rel="icon" type="image/png" href="assets/icons/app-192.png">
     <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/player.css">
     <link rel="stylesheet" href="css/rgb.css">
+    <link rel="stylesheet" href="css/mobile.css">
     <title>Musimix 2</title>
   </head>
   <body>
     <aside class="sidebar">
-      <a class="logo" href="#accueil" aria-label="Musimix 2, accueil">MUSIMIX <span>2</span></a>
+      <a class="logo" href="#accueil" aria-label="Musimix 2, accueil"><img src="assets/logo.png" alt=""> MUSIMIX <span>2</span></a>
       <nav class="navigation" aria-label="Navigation principale">
         <button class="nav-button active" type="button" data-view="home"><span aria-hidden="true">⌂</span> Accueil</button>
         <button class="nav-button" type="button" data-view="ai"><span aria-hidden="true">✳</span> IA</button>
         <button class="nav-button" type="button" data-view="favorites"><span aria-hidden="true">♡</span> Favoris</button>
-        <button class="nav-button" type="button" data-view="library"><span aria-hidden="true">♫</span> MP3</button>
+        <button class="nav-button" type="button" data-view="library"><span aria-hidden="true">♫</span> MP3 / MP4</button>
+        <button class="nav-button" type="button" data-view="playlists"><span aria-hidden="true">▤</span> Playlists</button>
+        <button class="nav-button" type="button" data-view="discover"><span aria-hidden="true">⌕</span> Découvrir</button>
         <button class="nav-button" type="button" data-view="offline"><span aria-hidden="true">↓</span> Hors ligne</button>
       </nav>
       <p class="sidebar-note"><span class="status-dot"></span> Bibliothèque locale</p>
@@ -57,17 +62,81 @@
             <p class="eyebrow" id="collection-label">TA COLLECTION</p>
             <h2 id="library-title">Bibliothèque <span id="song-count" class="count">0</span></h2>
           </div>
-          <label class="add-button" for="fileInput"><span aria-hidden="true">+</span> Ajouter des MP3</label>
-          <input class="visually-hidden" type="file" id="fileInput" accept="audio/*" multiple>
+          <label class="add-button" for="fileInput"><span aria-hidden="true">+</span> Ajouter des MP3 / MP4</label>
+          <input class="visually-hidden" type="file" id="fileInput" accept="audio/*,video/mp4,.mp4" multiple>
         </div>
+        <p class="discovery-status" id="import-status" aria-live="polite"></p>
         <div class="track-heading" aria-hidden="true"><span>TITRE</span><span>ACTION</span></div>
         <div id="songs" class="songs" aria-live="polite"></div>
+      </section>
+
+      <section class="playlists-section" id="playlists-section" aria-labelledby="playlists-title" hidden>
+        <div class="section-heading">
+          <div>
+            <p class="eyebrow">TES SÉLECTIONS</p>
+            <h2 id="playlists-title">Playlists</h2>
+          </div>
+        </div>
+        <form class="playlist-create-form" id="playlist-form">
+          <label class="visually-hidden" for="playlist-name">Nom de la playlist</label>
+          <input id="playlist-name" type="text" maxlength="60" placeholder="Nom de la playlist" required>
+          <button class="mood-button" type="submit">Créer</button>
+        </form>
+        <p class="discovery-status" id="playlist-status" aria-live="polite"></p>
+        <div class="playlist-layout">
+          <div class="playlist-list" id="playlist-list" aria-label="Tes playlists"></div>
+          <div class="playlist-detail">
+            <h3 id="playlist-title">Aucune playlist sélectionnée</h3>
+            <form class="playlist-add-form" id="playlist-add-form" hidden>
+              <label class="visually-hidden" for="playlist-song-select">Morceau à ajouter</label>
+              <select id="playlist-song-select" required></select>
+              <button class="mood-button" type="submit">Ajouter un morceau</button>
+            </form>
+            <div class="songs" id="playlist-songs" aria-live="polite"></div>
+          </div>
+        </div>
+      </section>
+
+      <section class="discovery-section" id="discovery-section" aria-labelledby="discovery-title" hidden>
+        <div class="section-heading">
+          <div>
+            <p class="eyebrow">CATALOGUE MUSICAL</p>
+            <h2 id="discovery-title">Découvrir des titres</h2>
+          </div>
+        </div>
+        <form class="discovery-form" id="discovery-form">
+          <label>
+            <span>Service</span>
+            <select id="music-provider">
+              <option value="spotify">Spotify</option>
+              <option value="deezer">Deezer</option>
+              <option value="jamendo">Jamendo</option>
+            </select>
+          </label>
+          <label>
+            <span>Recherche</span>
+            <input id="spotify-query" type="search" placeholder="Titre, artiste ou album" required>
+          </label>
+          <label id="spotify-token-field">
+            <span>Jeton d’accès Spotify</span>
+            <input id="spotify-token" type="password" autocomplete="off" placeholder="Jeton OAuth temporaire" required>
+          </label>
+          <label id="jamendo-client-field" hidden>
+            <span>Client ID Jamendo</span>
+            <input id="jamendo-client-id" type="text" autocomplete="off" placeholder="Client ID Jamendo" value="1c474c1325e74347b425495c617390f1">
+            <small>À obtenir sur le <a href="https://developer.jamendo.com/v3.0" target="_blank" rel="noopener noreferrer">portail développeur Jamendo</a>.</small>
+          </label>
+          <button class="mood-button" type="submit">Rechercher</button>
+        </form>
+        <p class="discovery-status" id="discovery-status" aria-live="polite">Spotify nécessite un jeton OAuth. Deezer permet d’écouter des extraits de 30 secondes dans le lecteur intégré.</p>
+        <div id="results" class="songs" aria-live="polite"></div>
       </section>
     </main>
 
     <footer class="player">
       <div class="current-track"><span class="cover-mark" aria-hidden="true">♫</span><span id="currentSong">Aucune musique</span></div>
       <audio id="audio" controls preload="metadata" aria-label="Lecteur audio"></audio>
+      <video id="video" controls playsinline preload="metadata" aria-label="Lecteur vidéo" hidden></video>
       <span class="player-caption">MUSIMIX 2</span>
     </footer>
 

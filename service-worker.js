@@ -1,7 +1,11 @@
-const CACHE_NAME = 'musimix-shell-v1';
+const CACHE_NAME = 'musimix-shell-v3';
 const APP_SHELL = [
-  './', './index.html', './manifest.json', './css/style.css', './css/rgb.css',
-  './js/app.js', './js/player.js', './js/indexeddb.js', './js/ai.js', './js/search.js', './js/offline.js'
+  './', './index.html', './manifest.json', './assets/logo.png',
+  './assets/icons/app-192.png', './assets/icons/app-512.png', './assets/icons/app-maskable-512.png',
+  './css/style.css', './css/player.css', './css/rgb.css', './css/mobile.css',
+  './js/app.js', './js/player.js', './js/search.js', './js/indexeddb.js',
+  './js/favorites.js', './js/playlist.js', './js/offline.js', './js/ai.js', './js/settings.js',
+  './api/spotify.js', './api/deezer.js', './api/jamendo.js'
 ];
 
 self.addEventListener('install', (event) => {

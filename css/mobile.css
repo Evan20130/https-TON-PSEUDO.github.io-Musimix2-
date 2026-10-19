@@ -1,0 +1,28 @@
+@media (max-width: 760px) {
+  .sidebar { inset: auto 0 90px; width: auto; height: 60px; padding: 5px 8px; border-top: 1px solid var(--line); }
+  .logo, .sidebar-note { display: none; }
+  .navigation { height: 100%; grid-template-columns: repeat(7, minmax(0, 1fr)); gap: 2px; }
+  .nav-button { min-width: 0; flex-direction: column; justify-content: center; gap: 1px; padding: 3px 1px; font-size: 9px; }
+  .nav-button span { font-size: 17px; }
+  .main { width: 100%; min-height: calc(100vh - 150px); margin: 0; padding: 24px 18px 175px; }
+  .page-header { align-items: stretch; flex-direction: column; gap: 17px; margin-bottom: 22px; }
+  h1 { font-size: 28px; }
+  .search-wrap { width: 100%; }
+  .ai-panel { min-height: 220px; padding: 24px 20px; }
+  .sound-art { position: absolute; right: 0; bottom: 14px; margin: 0; opacity: .45; }
+  .library-section, .playlists-section, .discovery-section { margin-top: 30px; }
+  .discovery-form { grid-template-columns: 1fr; }
+  .playlist-layout { grid-template-columns: 1fr; }
+  .player { bottom: 60px; height: 90px; grid-template-columns: minmax(95px, .8fr) minmax(140px, 1.2fr); gap: 12px; padding: 10px 14px; }
+  .player.video-active { height: 230px; grid-template-rows: 36px 1fr; }
+  .player.video-active video { height: 170px; }
+  .player-caption { display: none; }
+  .current-track .cover-mark { width: 34px; height: 34px; flex-basis: 34px; }
+}
+
+@media (max-width: 390px) {
+  .section-heading { align-items: start; flex-direction: column; }
+  .add-button { align-self: flex-start; }
+  .player { grid-template-columns: minmax(80px, .8fr) minmax(120px, 1.2fr); gap: 8px; padding-inline: 9px; }
+  .nav-button { font-size: 8px; }
+}
